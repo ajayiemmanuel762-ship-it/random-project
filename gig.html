@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gig portfolio</title>
+  <style>
+    @media (min-width: 600px) {
+.services {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.services h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #1e1b4b;
+}
+
+.service-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.service-card {
+  background: linear-gradient(135deg, #7e7070, #e0e7ff);
+  border-radius: 10px;
+  padding: 25px 20px;
+  width: 220px;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 24px rgba(99, 102, 241, 0.2);
+}
+
+.service-card h3 {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  color: #312e81;
+}
+
+.service-card p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.1;
+}
+  }
+  </style>
+</head>
+<body>
+  <section class="services">
+  <h2>What I Can Build For You</h2>
+  <div class="service-grid">
+    <div class="service-card">
+      <h3>Landing Pages</h3>
+      <p>Responsive, animated landing pages built from scratch — from $25</p>
+    </div>
+    <div class="service-card">
+      <h3>Design to Code</h3>
+      <p>Turn your Figma or mockup into a working site — from $30</p>
+    </div>
+    <div class="service-card">
+      <h3>Forms & Interactions</h3>
+      <p>Floating labels, validation, smooth animations — from $15</p>
+    </div>
+    <div class="service-card">
+      <h3>CSS Fixes</h3>
+      <p>Layout, centering, and responsiveness fixes — from $10</p>
+    </div>
+  </div>
+</section>
+</body>
+</html>

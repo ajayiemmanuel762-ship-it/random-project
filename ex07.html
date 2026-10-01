@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <script>
+      function greet (name) {
+        console.log(`Hello! ${name}`)
+      };
+
+      greet ('John');
+
+      function Greet (Name) {
+        console.log(`${Name} My Parents says Hello!`)
+      };
+
+      Greet ('charles');
+
+      function Sola (namE) {
+        console.log(`${namE} is a billionaire in transit`)
+      };
+      
+      Sola ('Chiboy');
+
+      function greeT () {if (name === undefined) {
+        console.log('Hi!')
+      } else {
+        console.log('Hi there!')
+      }
+      }
+
+      greeT();
+
+      function convertToFahrenheit (celsius) {
+        (celsius * 9 / 5) + 32
+      };
+
+      convertToFahrenheit (25) = 77;
+
+      function convertToCelsius (fahrenheit) {
+        (fahrenheit - 32) * 5 / 9
+      }
+
+      convertToCelsius (86) => 30;
+
+      function convertTemperature (degrees, unit) {
+        convertTemperature(25, 'C') '77F'
+      }
+
+      convertTemperature (86, 'F') => '30C'
+
+      return convertToFahrenheit;
+
+
+      function convertLength (length, from, to) {
+       const conversions = {
+        'miles': {'km': 1.6, 'miles': 1},
+        'km': {'miles': 1/1.6, 'km': 1}
+       }
+
+       const result = length * cconversions[from][to];
+       return `${result.toFixed(0)} ${to}`
+      };
+
+      /*
+      console.log(convertLength (50,'miles', 'km')); // '80 km'
+      console.log(convertLength (32, 'km', 'miles')) // '20 miles'
+      console,log(convertLength (50, 'km', 'km')) // '50 km'
+      console,log(convertLength (50, 'miles', 'km')) // '8 km' 
+      */
+
+
+      function convertLength (length, from, to) {
+       const conversions = {
+        'miles': {'km': 1.6, 'miles': 1, 'ft': 5280},
+        'km': {'miles': 1/1.6, 'km': 1,'ft': 3281 },
+        'ft': {'miles': 1/5280, 'km': 1/3281, 'ft': 1}
+       }
+
+       const result = length * cconversions[from][to];
+       return `${result.toFixed(0)} ${to}`
+      };
+
+     /* 
+     console.log(convertLength (50,'miles', 'km')); // '80 km'
+      console.log(convertLength (32, 'km', 'miles')) // '20 miles'
+      console,log(convertLength (50, 'km', 'km')) // '50 km'
+      console,log(convertLength (50, 'miles', 'km')) // '8 km' 
+      */
+
+
+      function convertLength (length, from, to) {
+       const units = ['km', 'miles', 'ft'];
+       if (!units.includes(from) || !units.includes(to)) {
+        const invalidUnits = !units.includes(from) ? from : to;
+        return `invalid unit: ${invalidUnit}`;
+       }
+       
+      const conversions = {
+        'miles': {'km': 1.6, 'miles': 1, 'ft': 5280},
+        'km': {'miles': 1/1.6, 'km': 1,'ft': 3281 },
+        'ft': {'miles': 1/5280, 'km': 1/3281, 'ft': 1}
+       }
+
+      const result = length * cconversions[from][to];
+       return `${result.toFixed(0)} ${to}`
+      };
+
+     /* 
+     console.log(convertLength (50,'miles', 'km')); // '80 km'
+      console.log(convertLength (32, 'km', 'miles')) // '20 miles'
+      */
+    </script>
+  </body>
+</html>

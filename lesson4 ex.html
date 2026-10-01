@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My practice file</title>
+  <style>
+    .cart-button {
+      background-color: yellow;
+      border: 1px solid;
+      padding: 10px;
+      border-radius: 15px;
+    }
+  </style>
+</head>
+<body>
+  <button class="cart-button" onclick="
+    updateCartButton()
+    ">Add to Cart</button>
+
+  <input class="input1" placeholder="search"
+  onkeydown="
+  myKeydown(event)">
+
+  <p class="text1"></p>
+  <script>
+    function updateCartButton() {
+      const buttonElement = document.querySelector('.cart-button');
+
+      if (buttonElement.innerText === 'Add to Cart') {
+        buttonElement.innerHTML = 'Added'
+      } else {
+        buttonElement.innerHTML = 'Add to Cart';
+      }
+    }
+
+    function myKeydown(event) {
+       if(event.key === 'Enter') {
+        updateInput1();
+      }
+    }
+
+    function updateInput1() {
+      const textElement = document.querySelector('.input1');
+      const par = String(textElement.value);
+
+      document.querySelector('.text1')
+        .innerHTML = '';
+    }
+  </script>
+</body>
+</html>

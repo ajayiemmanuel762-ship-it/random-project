@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Belatores Football Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pitch: #122019;
+    --pitch-deep: #0b1510;
+    --parchment: #efe9dc;
+    --gold: #c9a227;
+    --gold-bright: #e3bd3f;
+    --crimson: #8c2f2f;
+    --sage: #9ca88e;
+    --line: rgba(239,233,220,0.14);
+    --font-display: 'Anton', sans-serif;
+    --font-body: 'Work Sans', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background: var(--pitch);
+    color: var(--parchment);
+    font-family: var(--font-body);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  a{color:inherit; text-decoration:none;}
+  img{display:block; max-width:100%;}
+  ul{list-style:none;}
+  section{position:relative;}
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  .eyebrow{
+    font-family: var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color: var(--gold);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:14px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:22px; height:2px;
+    background: var(--gold);
+    display:inline-block;
+  }
+
+  h1,h2,h3{
+    font-family: var(--font-display);
+    text-transform:uppercase;
+    line-height:0.95;
+    letter-spacing:0.01em;
+    font-weight:400;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    background: rgba(11,21,16,0.72);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 24px;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-family:var(--font-display);
+    font-size:19px;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+  }
+  .crest{
+    width:38px; height:38px;
+    flex-shrink:0;
+    border-radius:50%;
+  }
+  .nav-links{
+    display:flex;
+    gap:32px;
+    font-size:14px;
+    font-weight:500;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+  }
+  .nav-links a{
+    position:relative;
+    padding:4px 0;
+    color: var(--parchment);
+    opacity:0.85;
+    transition: opacity 0.2s ease;
+  }
+  .nav-links a::after{
+    content:'';
+    position:absolute;
+    left:0; bottom:0;
+    width:0; height:2px;
+    background: var(--gold);
+    transition: width 0.25s ease;
+  }
+  .nav-links a:hover{opacity:1;}
+  .nav-links a:hover::after{width:100%;}
+
+  .nav-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background: var(--gold);
+    color: var(--pitch-deep);
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    padding:10px 18px;
+    border-radius:2px;
+    transition: transform 0.15s ease, background 0.2s ease;
+  }
+  .nav-cta:hover{ background: var(--gold-bright); transform:translateY(-1px); }
+  .nav-cta:active{ transform: scale(0.96); }
+
+  .burger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:6px;
+  }
+  .burger span{
+    width:24px; height:2px;
+    background: var(--parchment);
+    display:block;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  .burger.open span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+  .burger.open span:nth-child(2){ opacity:0; }
+  .burger.open span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+
+  /* ---------- HERO ---------- */
+  .main{
+    min-height:100svh;
+    display:flex;
+    align-items:flex-end;
+    background: linear-gradient(180deg, rgba(11,21,16,0.35) 0%, rgba(11,21,16,0.55) 55%, var(--pitch) 100%), url('images/stadium-fans.jpg') center 30%/cover no-repeat;
+    padding-top:90px;
+  }
+  .main-inner{
+    padding-bottom:64px;
+    width:100%;
+  }
+  .founding{
+    font-family:var(--font-mono);
+    font-size:13px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color: var(--gold-bright);
+    margin-bottom:18px;
+    opacity:0;
+    animation: rise 0.7s ease forwards 0.1s;
+  }
+  .main h1{
+    font-size: clamp(56px, 11vw, 148px);
+    opacity:0;
+    animation: rise 0.8s ease forwards 0.25s;
+  }
+
+  .main h1 span{ 
+    color: var(--gold); 
+  }
+
+  .main p{
+    max-width:520px;
+    font-size:17px;
+    color: var(--sage);
+    margin-top:20px;
+    opacity:0;
+    animation: rise 0.8s ease forwards 0.45s;
+  }
+  .bellatores-actions{
+    display:flex;
+    gap:16px;
+    margin-top:34px;
+    flex-wrap:wrap;
+    opacity:0;
+    animation: rise 0.8s ease forwards 0.6s;
+  }
+  @keyframes rise{
+    from{ opacity:0; transform: translateY(18px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:15px 26px;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    border-radius:2px;
+    transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+  }
+  .btn-primary{
+    background: var(--gold);
+    color: var(--pitch-deep);
+  }
+  .btn-primary:hover{ background: var(--gold-bright); transform:translateY(-2px); }
+  .btn-primary:active{ transform: scale(0.96); }
+  .btn-ghost{
+    border:1px solid var(--line);
+    color: var(--parchment);
+  }
+  .btn-ghost:hover{ border-color: var(--gold); color: var(--gold-bright); }
+  .btn-ghost:active{ transform: scale(0.96); }
+
+  /* ---------- TICKER ---------- */
+  .ticker-band{
+    background: var(--pitch-deep);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+    padding:14px 0;
+  }
+  .ticker-track{
+    display:flex;
+    width:max-content;
+    animation: scroll-left 32s linear infinite;
+  }
+  .ticker-track:hover{ animation-play-state: paused; }
+  .ticker-item{
+    font-family: var(--font-mono);
+    font-size:14px;
+    color: var(--sage);
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:0 28px;
+    border-right:1px solid var(--line);
+    white-space:nowrap;
+  }
+  .ticker-item b{ color: var(--parchment); font-weight:700; }
+  .ticker-item .score{ color: var(--gold-bright); font-weight:700; }
+  @keyframes scroll-left{
+    from{ transform: translateX(0); }
+    to{ transform: translateX(-50%); }
+  }
+
+  /* ---------- SECTION SHARED ---------- */
+  .section{ padding:110px 0; }
+  .section-head{ margin-bottom:56px; max-width:640px; }
+  .section-head h2{ font-size: clamp(34px, 5vw, 56px); }
+  .section-head p{ color: var(--sage); margin-top:16px; font-size:16px; max-width:520px; }
+
+  /* ---------- CLUB / ABOUT ---------- */
+  .club{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:64px;
+    align-items:center;
+  }
+  .club-photo{
+    position:relative;
+    border-radius:2px;
+    overflow:hidden;
+    aspect-ratio: 8/7;
+  }
+  .club-photo img{
+    width:100%; height:100%; object-fit:cover;
+    transition: transform 0.6s ease;
+  }
+  .club-photo:hover img{ transform: scale(1.06); }
+  .club-photo::after{
+    content:'';
+    position:absolute; inset:0;
+    box-shadow: inset 0 0 0 1px var(--line);
+  }
+  .club-stats{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:24px;
+    margin-top:40px;
+    border-top:1px solid var(--line);
+    padding-top:32px;
+  }
+  .stat-num{
+    font-family: var(--font-display);
+    font-size:42px;
+    color: var(--gold);
+  }
+  .stat-label{
+    font-family: var(--font-mono);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color: var(--sage);
+    margin-top:6px;
+  }
+  .club-copy p{ color: var(--sage); margin-bottom:18px; font-size:16px; }
+  .club-copy p:first-of-type{ color: var(--parchment); font-size:19px; font-weight:500; }
+
+  /* ---------- FIXTURES ---------- */
+  .fixtures-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:22px;
+  }
+  .ticket{
+    background: var(--pitch-deep);
+    border:1px dashed var(--line);
+    border-radius:4px;
+    padding:26px 24px;
+    position:relative;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .ticket:hover{ border-color: var(--gold); transform: translateY(-4px); }
+  .ticket-status{
+    font-family: var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color: var(--gold-bright);
+    margin-bottom:14px;
+    display:inline-block;
+    padding:4px 10px;
+    border:1px solid var(--gold);
+    border-radius:20px;
+  }
+  .ticket-status.away{ color: var(--sage); border-color: var(--sage); }
+  .ticket h3{ font-size:26px; margin-bottom:8px; }
+  .ticket-meta{
+    font-family: var(--font-mono);
+    font-size:13px;
+    color: var(--sage);
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    margin-top:14px;
+    padding-top:14px;
+    border-top:1px solid var(--line);
+  }
+
+  /* ---------- SQUAD FEATURE ---------- */
+  .squad{
+    display:grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap:0;
+    align-items:stretch;
+    background: var(--pitch-deep);
+    border:1px solid var(--line);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .squad-photo{
+    position:relative;
+    min-height:480px;
+    overflow:hidden;
+  }
+  .squad-photo img{
+    width:100%; height:100%; object-fit:cover;
+    object-position: top center;
+  }
+  .squad-number{
+    position:absolute;
+    top:-30px; left:-10px;
+    font-family: var(--font-display);
+    font-size:220px;
+    color: rgba(239,233,220,0.08);
+    line-height:1;
+    -webkit-text-stroke: 1px rgba(239,233,220,0.15);
+  }
+  .squad-copy{
+    padding:56px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .squad-copy .eyebrow{ margin-bottom:10px; }
+  .squad-copy h3{ font-size: clamp(32px, 4vw, 46px); margin-bottom:16px; }
+  .squad-copy p{ color: var(--sage); margin-bottom:16px; }
+  .squad-tags{ display:flex; gap:10px; flex-wrap:wrap; margin-top:20px; }
+  .squad-tags span{
+    font-family: var(--font-mono);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color: var(--gold-bright);
+    border:1px solid var(--line);
+    padding:6px 12px;
+    border-radius:20px;
+  }
+
+  /* ---------- GALLERY ---------- */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows:250px;
+    gap:14px;
+  }
+  .gallery-grid figure{
+    position:relative;
+    overflow:hidden;
+    border-radius:2px;
+  }
+  .gallery-grid figure:nth-child(1){ grid-column: span 2; grid-row: span 2; }
+  .gallery-grid figure:nth-child(2){ grid-column: span 2; }
+  .gallery-grid figure:nth-child(3){ grid-column: span 2; }
+  .gallery-grid img{
+    width:100%; height:100%; object-fit:cover;
+    transition: transform 0.5s ease, filter 0.5s ease;
+    filter: grayscale(35%);
+  }
+  .gallery-grid figure:hover img{ transform: scale(1.08); filter: grayscale(0%); }
+  .gallery-grid figcaption{
+    position:absolute; left:0; right:0; bottom:0;
+    padding:14px 16px;
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color: var(--parchment);
+    background: linear-gradient(0deg, rgba(11,21,16,0.85), transparent);
+    opacity:0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .gallery-grid figure:hover figcaption{ opacity:1; transform: translateY(0); }
+
+  /* ---------- JOIN / CONTACT ---------- */
+  .join{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:64px;
+  }
+  .join-copy h2{ font-size: clamp(34px, 5vw, 54px); margin-bottom:18px; }
+  .join-copy p{ color: var(--sage); margin-bottom:28px; max-width:440px; }
+  .join-list{ display:flex; flex-direction:column; gap:16px; }
+  .join-list li{
+    display:flex; gap:14px; align-items:flex-start;
+    font-size:15px; color: var(--sage);
+  }
+  .join-list b{ color: var(--parchment); font-family:var(--font-mono); font-size:13px; min-width:28px; }
+
+  form{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    background: var(--pitch-deep);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:32px;
+  }
+  .field{ display:flex; flex-direction:column; gap:8px; }
+  .field label{
+    font-family:var(--font-mono);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color: var(--sage);
+  }
+  .field input, .field select, .field textarea{
+    background: var(--pitch);
+    border:1px solid var(--line);
+    border-radius:2px;
+    padding:12px 14px;
+    color: var(--parchment);
+    font-family: var(--font-body);
+    font-size:15px;
+    outline:none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,162,39,0.18);
+  }
+  .field textarea{ resize:vertical; min-height:96px; }
+  form button{
+    align-self:flex-start;
+    border:none;
+    cursor:pointer;
+    margin-top:6px;
+  }
+  .form-note{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color: var(--gold-bright);
+    min-height:16px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:20px 0;
+    background: linear-gradient(180deg, rgba(11,21,16,0.35), rgba(11,21,16,0.15));
+  }
+  .footer-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:20px 28px;
+    min-height:90px;
+  }
+  .footer-brand{
+    display:flex;
+    align-items:center;
+    gap:0;
+    font-family:var(--font-display);
+    text-transform:uppercase;
+    font-size:16px;
+    letter-spacing:0.03em;
+  }
+  .footer-socials{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .footer-socials a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:48px;
+    height:48px;
+    border:1px solid rgba(239,233,220,0.24);
+    border-radius:50%;
+    background: rgba(201,162,39,0.12);
+    color: var(--parchment);
+    box-shadow: 0 0 0 1px rgba(201,162,39,0.1), 0 8px 24px rgba(0,0,0,0.16);
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+  .footer-socials a:hover{
+    transform: translateY(-2px) scale(1.03);
+    background: rgba(201,162,39,0.2);
+    border-color: var(--gold);
+    color: var(--gold-bright);
+  }
+  .footer-socials a:active{
+    transform: scale(0.95);
+  }
+  .social-icon{
+    width:22px;
+    height:22px;
+    display:block;
+    fill: currentColor;
+  }
+  .footer-links{
+    display:flex;
+    gap:26px;
+    font-family:var(--font-mono);
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color: var(--sage);
+  }
+  .footer-links a:hover{
+    color: var(--gold-bright);
+  }
+
+  /* ---------- REVEAL ON SCROLL ---------- */
+  .reveal{
+    opacity:0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.in{ opacity:1; transform: translateY(0); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 880px){
+    .nav-links, .nav-cta{ display:none; }
+    .burger{ display:flex; }
+    .nav-links.mobile-open{
+      display:flex;
+      position:absolute;
+      top:100%; left:0; right:0;
+      flex-direction:column;
+      background: var(--pitch-deep);
+      padding:24px;
+      gap:20px;
+      border-bottom:1px solid var(--line);
+    }
+    .club, .squad, .join{ grid-template-columns: 1fr; }
+    .squad-photo{ min-height:320px; }
+    .squad-copy{ padding:36px 28px; }
+    .fixtures-grid{ grid-template-columns: 1fr; }
+    .gallery-grid{ grid-template-columns: repeat(2,1fr); grid-auto-rows:160px; }
+    .gallery-grid figure:nth-child(1){ grid-column: span 2; grid-row: span 2; }
+    .gallery-grid figure:nth-child(2){ grid-column: span 1; }
+    .gallery-grid figure:nth-child(3){ grid-column: span 1; }
+    .club-stats{ grid-template-columns: repeat(3,1fr); gap:14px; }
+    .stat-num{ font-size:32px; }
+    .section{ padding:72px 0; }
+  }
+  @media (max-width: 540px){
+    .hero{ align-items:flex-end; }
+    .hero-actions{ flex-direction:column; align-items:stretch; }
+    .club-stats{ grid-template-columns: repeat(3,1fr); }
+    .squad-number{ font-size:140px; top:-10px; }
+  }
+
+  :focus-visible{
+    outline:2px solid var(--gold-bright);
+    outline-offset:3px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <div class="brand">
+      <img class="crest" src="img-icon/FB_IMG_1784295706476.jpg" alt="Bellatrores SC">
+      <span>Bellatores <span style="color:#c9a227">FC</span></span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#club">Club</a></li>
+      <li><a href="#fixtures">Fixtures</a></li>
+      <li><a href="#squad">Squad</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#join">Join</a></li>
+    </ul>
+    <a href="#join" class="nav-cta">Get tickets</a>
+    <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!---My first section-->
+
+<section class="main">
+  <div class="wrap main-inner">
+    <p class="founding">Est. 2014 &mdash; Home ground: Eyemote CHS Pitch</p>
+    <h1>We are<br><span>Belatores</span></h1>
+    <p>Latin for warriors. Built on a dirt pitch, sharpened under stadium lights &mdash; Belatores FC plays for the badge, the block, and everyone who's ever chased a ball at sunset.</p>
+    <div class="bellatores-actions">
+      <a href="#fixtures" class="btn btn-primary">See fixtures</a>
+      <a href="#join" class="btn btn-ghost">Join the club</a>
+    </div>
+  </div>
+</section>
+
+<div class="ticker-band">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<section class="section" id="club">
+  <div class="wrap club reveal">
+    <div class="club-photo">
+      <img src="img-icon/IMG-20260717-WA0038.jpg" alt="Bellatores players training on the open pitch at golden hour" loading="lazy">
+    </div>
+    <div class="club-copy">
+      <div class="eyebrow">The club</div>
+      <h2 style="font-size:clamp(30px,4vw,44px); margin-bottom:22px;">Every warrior started<br>on borrowed ground.</h2>
+      <p>Bellatores FC began as a Sunday kickabout on a dirt lot with tyre-lined goalposts. No changing rooms, no floodlights &mdash; just a ball, a chalk line, and eleven people who refused to stop showing up.</p>
+      <p>A decade on, we've traded the dirt for turf, but the standard hasn't moved: play for who's next to you, earn the shirt every week, and never let the badge down.</p>
+      <div class="club-stats">
+        <div>
+          <div class="stat-num">11</div>
+          <div class="stat-label">Years running</div>
+        </div>
+        <div>
+          <div class="stat-num">34</div>
+          <div class="stat-label">First-team squad</div>
+        </div>
+        <div>
+          <div class="stat-num">6</div>
+          <div class="stat-label">League titles</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="fixtures">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Fixtures</div>
+      <h2>Matchday schedule</h2>
+      <p>Next up on the calendar &mdash; home fixtures at Eyemote CHS Pitch, away days on the road.</p>
+    </div>
+    <div class="fixtures-grid reveal" id="fixturesGrid"></div>
+  </div>
+</section>
+
+<section class="section" id="squad" style="padding-top:0;">
+  <div class="wrap">
+    <div class="squad reveal">
+      <div class="squad-photo">
+        <span class="squad-number">16</span>
+        <img src="img-icon/IMG-20260717-WA0106.jpg" alt="Bellatores defender wearing the club's away kit, smiling before kickoff" loading="lazy">
+      </div>
+      <div class="squad-copy">
+        <div class="eyebrow">Player of the month</div>
+        <h3>Owolabi Muritala</h3>
+        <p>Defender. Joined Bellatores at fourteen from the youth pitch two streets over &mdash; now our leading scorer for the third season running.</p>
+        <p>"This badge means more when you remember where it came from. Every match, we play for the ones still out there on the dirt."</p>
+        <div class="squad-tags">
+          <span>No. 16 &middot; Defender</span>
+          <span>14 clean sheets this season</span>
+          <span>Presented by Bellatores FC Team Manager(TM), 2025&ndash;26</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Gallery</div>
+      <h2>Matchday moments</h2>
+      <p>From packed stadium terraces to the pitch where it all began.</p>
+    </div>
+    <div class="gallery-grid reveal">
+      <figure>
+        <img src="img-icon/IMG-20260717-WA0086.jpg" alt="Wide view of a packed stadium with fans raising their arms during a match" loading="lazy">
+        <figcaption>Full house &mdash; matchday under the lights</figcaption>
+      </figure>
+      <figure>
+        <img src="img-icon/IMG-20260717-WA0102.jpg" alt="Two players challenging for the ball on a grass pitch" loading="lazy">
+        <figcaption>Close up view of Staff and players</figcaption>
+      </figure>
+      <figure>
+        <img src="img-icon/IMG-20260717-WA0070.jpg" alt="Overhead view of fans celebrating a goal at pitch side" loading="lazy">
+        <figcaption>The terrace erupts</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="join">
+  <div class="wrap join">
+    <div class="join-copy reveal">
+      <div class="eyebrow">Join Belatores</div>
+      <h2>Wear the badge.<br>Earn the shirt.</h2>
+      <p>Trials run every first Saturday of the month at Ferrum Park. All positions, all levels &mdash; we'll place you where you fit.</p>
+      <ul class="join-list">
+        <li><b>01</b> Fill in the form and tell us your position.</li>
+        <li><b>02</b> We'll reply within three days with a trial slot.</li>
+        <li><b>03</b> Bring boots, shin guards, and your best touch.</li>
+      </ul>
+    </div>
+    <form class="reveal" id="joinForm">
+      <div class="field">
+        <label for="name">Full name</label>
+        <input type="text" id="name" name="name" placeholder="Olasukanmi Maguire" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@email.com" required>
+      </div>
+      <div class="field">
+        <label for="position">Preferred position</label>
+        <select id="position" name="position" required>
+          <option value="" disabled selected>Choose a position</option>
+          <option>Goalkeeper</option>
+          <option>Defender</option>
+          <option>Midfielder</option>
+          <option>Forward</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="message">Tell us about your game</label>
+        <textarea id="message" name="message" placeholder="Years playing, previous clubs, availability..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Request trial ↗</button>
+      <p class="form-note" id="formNote"></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <div class="footer-brand">
+      <img class="crest" src="img-icon/FB_IMG_1784295706476.jpg" alt="Bellatores SC">
+      Bellatores FC
+    </div>
+
+    <!-- SOCIAL LINKS: social details here -->
+    <div class="footer-socials" aria-label="Bellatores social links">
+      <!-- Instagram URL -->
+      <a href="https://www.instagram.com/bellatores_sport_club?igsh=M21uc3VhcTZ3ZjZ1&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-label="Instagram">
+        <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="1.8"></rect>
+          <circle cx="12" cy="12" r="4.4" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
+          <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"></circle>
+        </svg>
+      </a>
+
+      <!-- Facebook URL -->
+      <a href="https://www.facebook.com/share/1DQgUiiy53/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-label="Facebook">
+        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M80 299.3l0 212.7 116 0 0-212.7 86.5 0 18-97.8-104.5 0 0-34.6c0-51.7 20.3-71.5 72.7-71.5 16.3 0 29.4 .4 37 1.2l0-88.7C291.4 4 256.4 0 236.2 0 129.3 0 80 50.5 80 159.4l0 42.1-66 0 0 97.8 66 0z"/></svg>
+      </a>
+
+      <!-- TikTok URL -->
+      <a href="https://www.tiktok.com/@bellatores.sport" target="_blank" rel="noopener noreferrer" aria-label="TikTok" data-label="TikTok">
+        <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M14.5 3c.4 2.4 1.7 4.1 4.1 4.6v2.8c-1.4.1-2.7-.3-4-.9v5.4a5.7 5.7 0 1 1-5.6-5.7c.2 0 .4 0 .6.1v2.9a2.8 2.8 0 1 0 1.9 2.7V3h2.9Z" fill="currentColor"></path>
+        </svg>
+      </a>
+
+      <!-- WhatsApp link -->
+      <a href="https://web.whatsapp.com/channel/0029vb7aDjd9Gv7aeleTWy1q" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-label="WhatsApp">
+        <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3a9 9 0 0 0-7.9 13.6L3 21l4.5-1.1A9 9 0 1 0 12 3Zm0 16.2a7.3 7.3 0 0 1-3.8-1.1l-.3-.2-2.5.7.7-2.4-.2-.3A7.3 7.3 0 1 1 12 19.2Zm3.9-5.4c-.2-.1-1.2-.6-1.4-.7-.2-.1-.3-.1-.4.1-.1.2-.5.7-.6.8-.1.1-.2.1-.4 0a5.9 5.9 0 0 1-1.7-1.2 6.2 6.2 0 0 1-1.2-1.5c-.1-.2 0-.3.1-.4l.3-.3c.1-.1.2-.2.3-.3a.3.3 0 0 0 0-.3c-.1-.2-.7-1.7-.9-2.3-.1-.7-.2-.6-.3-.6h-.4a.8.8 0 0 0-.6.3 2.4 2.4 0 0 0-.8 1.8c0 .8.4 2.1 1 3.2a8.7 8.7 0 0 0 4.7 4.3c1.1.4 1.8.5 2.5.4.7-.1 1.2-.6 1.4-1.2.2-.7.2-1.2 0-1.4-.2-.2-.3-.2-.5-.2Z" fill="currentColor"></path>
+        </svg>
+      </a>
+    </div>
+
+    <div class="footer-links">
+      <span>&copy; 2026 Bellatores FC. Eyemote CHS Pitch.</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('mobile-open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open);
+    navLinks.style.display = open ? 'flex' : '';
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('mobile-open');
+      navLinks.style.display = '';
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', false);
+    });
+  });
+
+  // Fixtures data drives both the ticket cards and the scoreboard ticker
+  const fixtures = [
+    { status: 'Result', home: true, opponent: 'Awedele FC', date: 'Jun 21', venue: 'Eyemote CHS Pitch', score: 'W 3-1' },
+    { status: 'Result', home: false, opponent: 'Dynamo Fc', date: 'Jun 28', venue: 'Hamm Ground', score: 'D 2-2' },
+    { status: 'Next match', home: true, opponent: 'Super Lion', date: 'Jul 12', venue: 'Eyemote CHS Pitch', score: 'W 5-0' },
+    { status: 'Upcoming', home: false, opponent: 'Igede FC', date: 'Jul 19', venue: 'Saint Michael Pitch', score: null },
+    { status: 'Upcoming', home: true, opponent: 'Fiesu ST', date: 'Jul 26', venue: 'Eyemote CHS Pitch', score: null },
+  ];
+
+  const grid = document.getElementById('fixturesGrid');
+  fixtures.forEach(f => {
+    const card = document.createElement('div');
+    card.className = 'ticket';
+    card.innerHTML = `
+      <span class="ticket-status ${f.home ? '' : 'away'}">${f.status}</span>
+      <h3>${f.home ? 'Belatores FC' : f.opponent}<br>vs ${f.home ? f.opponent : 'Belatores FC'}</h3>
+      <div class="ticket-meta">
+        <span>${f.date} &middot; ${f.venue}</span>
+        <span>${f.score ? f.score : (f.home ? 'Home fixture' : 'Away fixture')}</span>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  const track = document.getElementById('tickerTrack');
+  const tickerItems = fixtures.map(f => {
+    const label = f.home ? `BFC vs ${f.opponent}` : `${f.opponent} vs BFC`;
+    const right = f.score ? `<span class="score">${f.score}</span>` : `<span>${f.date}</span>`;
+    return `<div class="ticker-item"><b>${label}</b>${right}</div>`;
+  }).join('');
+  track.innerHTML = tickerItems + tickerItems;
+
+  // Contact form (client-side only demo)
+  const form = document.getElementById('joinForm');
+  const note = document.getElementById('formNote');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    note.textContent = `Thanks, ${name.split(' ')[0] || 'friend'} — we'll be in touch about your trial slot.`;
+    form.reset();
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

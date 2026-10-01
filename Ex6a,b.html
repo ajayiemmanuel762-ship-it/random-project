@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .inputbox {
+        position: relative;
+      }
+
+      .inputbox input {
+        width: 230px;
+        padding:17px 13px;
+        border: 1px solid black;
+        outline: none;
+        border-radius: 8px;
+      }
+
+      .inputbox label {
+        position: absolute;
+        top: 15px;
+        left: 13px;
+        color: black;
+        transition: 0.3s;
+        pointer-events: none;
+      }
+
+      .inputbox input:focus + label,
+      .inputbox input:valid + label {
+        top: -9px;
+        color: #ffff;
+        background: black;
+        padding: 2px 7px;
+        border-radius: 12px;
+        font-size: 13px;
+      }
+    </style>
+  </head>
+<body>
+   
+  
+  <div class="inputbox">
+    <input type="text" required>
+    <label for="">Username</label>
+  </div>
+
+  <script>
+
+    const hour = 'Good Afternoon!';
+    console.log(hour);
+
+    const name = 'Sola';
+    console.log(name);
+
+    if (false) {
+      console.log(`Good afternoon ${name}!`)
+    }
+    else if (true) {
+      console.log(`Good evening ${name}!`)
+    };
+    
+    const peer = 15;
+    
+    if (peer >= 15) {
+      console.log("You can vote")
+    } else {
+      console.log("You can't vote yet")
+    };
+
+    let number = 20;
+    if (number <= 18) {
+      console.log('you can vote')
+    } else {
+      console.log("you can't vote yet")
+    }
+
+    let age = 18;
+    if (age > 15) {
+      console.log('discount')
+    } else {console.log('no-discount')}
+
+    const isHoliday = false;
+    const userAge = 20;
+    const ageRequirement = 18;
+    const isMember = true;
+
+    if (!isHoliday && (userAge >= ageRequirement || isMember)) {
+      console.log('Discount available');
+    } else {
+      console.log ('No discount');
+    }
+
+    const peerAge = 12;
+    const holiday = true;
+
+    if (peerAge >= 15) {
+      console.log('not available');
+    } else {
+      console.log('available');
+    }
+
+    const UserAge = 21;
+    const userIncome = 100000;
+    const isBlacklisted = false;
+
+    if (userIncome && (UserAge >= 21 || !isBlacklisted)) {
+      console.log('loan approved');
+    } else ('loan denied');
+
+    const membershipType = 'Platinum';
+    const totalSpent = 500000;
+
+    if (['Gold','Platinum']. includes(membershipType)) {
+      console.log('Premium Support')
+    } else {
+      console.log('No Premium support')
+    }
+
+    const inStock = true;
+    const orderTotal = 10000;
+
+    if (orderTotal < 10000 && !inStock) {
+      console.log('No delivery')
+    } else {console.log(
+      'Standard Delivery'
+    )}
+
+    const purchaseCount = 5;
+    const isVIP = true;
+
+    if(purchaseCount >= 5 || isVIP) {
+      console.log('You got a mystery Gift')
+    } else {console.log('Keep shopping')}
+
+    const isStudent = true;
+    const orderTotall = 5000;
+
+    if (orderTotall >= 5000 && isStudent) {
+      console.log('10% discount applied');
+    } else { console.log('No discount')}
+
+
+    let Randomnumber = Math.random();
+    console.log(Randomnumber);
+
+    const Random = 0.3442039287447125;
+
+    if (Random < 0.5) {
+      console.log('heads')
+    } else {
+      console.log('tails')
+    };
+
+    let result = 'heads';
+    let guess = ('heads' || 'tails');
+
+    if (result === guess) {
+      console.log('You win');
+    } else {
+      console.log('You lose');
+    }
+   </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>objects</title>
+</head>
+<body>
+  <script>
+   const Myproduct = {
+    item: 'basketball',
+    price: 2095,
+    'delivery-time': '3 days'
+   };
+   console.log(Myproduct);
+
+   Myproduct.price = 2095 + 500;
+   console.log(Myproduct.price);
+
+   const product1 = {
+    name: 'football',
+    price: 4500
+   };
+
+   const product2 = {
+    name: 'volleyball',
+    price: 2500
+   };
+
+   function comparePrice(product1,product2) {
+    return product2
+   };
+
+   if (!product1.price <= product2.price) {
+    console.log('true')
+   } else {
+    console.log ('false')
+   };
+   
+   function isSameProduct(product1, product2) {
+    if (product1 === product2) {
+      return 'true'
+    } else {
+      return 'false'
+    }
+   };
+
+   console.log('Good Morning'.toLowerCase());
+   console.log('TESTING'.toLowerCase());
+
+   console.log('hello'.repeat(2));
+   console.log('testing'.repeat(3));
+  </script>
+</body>
+</html>

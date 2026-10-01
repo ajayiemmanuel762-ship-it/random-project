@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  background: -webkit-linear-gradient(to right, #6b3a1f, #d4956a);
+  background:      -o-linear-gradient(to right, #6b3a1f, #d4956a);
+  background:         linear-gradient(to right, #6b3a1f, #d4956a);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Public Sans", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding-top: 20px;
+}
+
+form .container {
+  display: flex;
+  flex-direction: column;
+  width: 45vw;
+  height: 90vh;
+  margin-inline: 10px;
+  padding: 20px;
+}
+
+#email,
+#pass {
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.input-1 {
+  border: none;
+  border-bottom: 2px solid black;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  color: #eee;
+  font-size: 15px;
+}
+
+.input-2 {
+  border: none;
+  border-bottom: 2px solid black;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  color: #eee;
+  font-size: 25px;
+}
+
+.input-1:focus,
+.input-2:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+  border-bottom: 2px solid black;
+  overflow: hidden;
+}
+
+.input-1::placeholder,
+.input-2::placeholder {
+  color: #fff;
+  font-size: 12px;
+  opacity: 0.3;
+}
+
+fieldset {
+  border: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+#chk {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
+#chk input {
+  width: 20px;
+  height: 20px;
+  accent-color: black;
+}
+
+.sign-btn {
+  width: 120px;
+  height: 40px;
+  font-size: 15px;
+  font-weight: 400;
+  margin: auto;
+  border: solid 2px;
+  animation: myAnimation 2s ease-in-out infinite;
+}
+
+@keyframes myAnimation {
+    0% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.2;
+    }
+  }
+
+.sign-btn:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: black;
+  border: none;
+  transition: all 2s;
+  transform: scale(1.2);
+  overflow: hidden;
+}
+
+.terms {
+  margin-top: 20px;
+  margin-left: 150px;
+  font-size: larger;
+  font-weight: 600;
+
+}

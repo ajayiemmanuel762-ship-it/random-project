@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NazaTheWaze — Frontend Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/mainportfolio.css">
+<script src="scripts/mainportfolio.js" defer></script>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">NazaTheWaze<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="hero-avatar">
+    <!--
+      MY PICTURE === AVATAR PLACEHOLDER
+    -->
+    <div class="avatar-placeholder"><img src="img-icon/Snapchat-283508691.jpg" alt="Chiboyyy" class="avatar-img"></div>
+    <div class="avatar-status">
+      <div class="status-dot"></div>
+      Available for work
+    </div>
+  </div>
+  
+  <p class="hero-eyebrow">Frontend Developer & UI Craftsperson</p>
+  <h1 class="hero-title">
+    I build things<br>that feel <span class="highlight">alive.</span>
+  </h1>
+  <p class="hero-sub">
+    Turning design into motion, ideas into interfaces — with clean code and a thing for details that most people don't notice but everyone feels.
+  </p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn-primary">See my work →</a>
+    <a href="#contact" class="btn-ghost">Let's talk <span>↗</span></a>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- ABOUT ME -->
+<section id="about">
+  <p class="section-label reveal">About</p>
+  <div class="about-grid">
+    <div>
+      <h2 class="about-heading reveal reveal-delay-1">
+        Crafting UI that moves people — literally.
+      </h2>
+      <p class="about-text reveal reveal-delay-2">
+        I'm NazaTheWaze, a frontend developer with an obsession for animation, interaction design, and building interfaces that feel like they were made by a human who cares. If it moves, transitions, or reacts — I'm interested.
+      </p>
+      <p class="about-text reveal reveal-delay-3">
+        When I'm not pushing pixels, I'm probably breaking something in a side project or figuring out why a bezier curve feels off by 0.1.
+      </p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card reveal reveal-delay-1">
+        <div class="stat-num">3+</div>
+        <div class="stat-desc">Years building for the web</div>
+      </div>
+      <div class="stat-card reveal reveal-delay-2">
+        <div class="stat-num">20+</div>
+        <div class="stat-desc">Projects shipped</div>
+      </div>
+      <div class="stat-card reveal reveal-delay-3">
+        <div class="stat-num">∞</div>
+        <div class="stat-desc">CSS animations debugged</div>
+      </div>
+      <div class="stat-card reveal reveal-delay-4">
+        <div class="stat-num">0</div>
+        <div class="stat-desc">Times I used `Important!` on purpose</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MY SKILLS -->
+<section id="skills" class="skills-section">
+  <p class="section-label reveal">Skills</p>
+  <h2 class="skills-heading reveal reveal-delay-1">The tools I actually know well.</h2>
+  <div class="skills-grid">
+    <div class="skill-chip reveal reveal-delay-1"><div class="skill-dot"></div>HTML & CSS</div>
+    <div class="skill-chip reveal reveal-delay-1"><div class="skill-dot"></div>CSS Animations</div>
+    <div class="skill-chip reveal reveal-delay-2"><div class="skill-dot"></div>JavaScript (ES6+)</div>
+    <div class="skill-chip reveal reveal-delay-2"><div class="skill-dot"></div>React</div>
+    <div class="skill-chip reveal reveal-delay-2"><div class="skill-dot"></div>Tailwind CSS</div>
+    <div class="skill-chip reveal reveal-delay-3"><div class="skill-dot"></div>Figma</div>
+    <div class="skill-chip reveal reveal-delay-3"><div class="skill-dot"></div>Framer Motion</div>
+    <div class="skill-chip reveal reveal-delay-3"><div class="skill-dot"></div>GSAP</div>
+    <div class="skill-chip reveal reveal-delay-4"><div class="skill-dot"></div>Git & GitHub</div>
+    <div class="skill-chip reveal reveal-delay-4"><div class="skill-dot"></div>Responsive Design</div>
+    <div class="skill-chip reveal reveal-delay-4"><div class="skill-dot"></div>Web Performance</div>
+    <div class="skill-chip reveal reveal-delay-4"><div class="skill-dot"></div>Accessibility</div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label reveal">Projects</p>
+  <h2 class="projects-heading reveal reveal-delay-1">Stuff I've built<br>and shipped.</h2>
+  <div class="projects-list">
+
+    <a href="#" class="project-card reveal">
+      <div>
+        <div class="project-tag">UI / Animation</div>
+        <h3 class="project-name">Motion Design System</h3>
+        <p class="project-desc">A library of reusable, accessible animation components built with CSS keyframes and custom cubic-bezier curves. Drop-in and go.</p>
+        <div class="project-stack">
+          <span class="stack-tag">CSS</span>
+          <span class="stack-tag">JavaScript</span>
+          <span class="stack-tag">Web Components</span>
+        </div>
+      </div>
+      <div class="project-arrow">→</div>
+    </a>
+
+    <a href="#" class="project-card reveal">
+      <div>
+        <div class="project-tag">App / Frontend</div>
+        <h3 class="project-name">Palette — Color Tool</h3>
+        <p class="project-desc">A real-time color palette generator with live contrast checking, export to CSS variables, and animated previews. Built in a weekend.</p>
+        <div class="project-stack">
+          <span class="stack-tag">React</span>
+          <span class="stack-tag">CSS Modules</span>
+          <span class="stack-tag">Canvas API</span>
+        </div>
+      </div>
+      <div class="project-arrow">→</div>
+    </a>
+
+    <a href="#" class="project-card reveal">
+      <div>
+        <div class="project-tag">Landing Page</div>
+        <h3 class="project-name">Bloom — Startup Site</h3>
+        <p class="project-desc">A high-performance marketing site with scroll-triggered animations, a custom cursor, and a perfect Lighthouse score. Fast and feels expensive.</p>
+        <div class="project-stack">
+          <span class="stack-tag">HTML</span>
+          <span class="stack-tag">CSS</span>
+          <span class="stack-tag">GSAP</span>
+          <span class="stack-tag">Vanilla JS</span>
+        </div>
+      </div>
+      <div class="project-arrow">→</div>
+    </a>
+
+  </div>
+</section>
+
+<!-- MY CONTACT -->
+<section id="contact" class="contact-section">
+  <h2 class="contact-heading reveal">Let's build<br>something.</h2>
+  <p class="contact-sub reveal reveal-delay-1">Open to freelance, full-time, and interesting problems.</p>
+  <a href="mailto:ajayiemmanuel762@gmail.com" class="contact-email reveal reveal-delay-2">ajayiemmanuel762@gmail.com</a>
+  <div class="contact-links reveal reveal-delay-3">
+    <a href="#" class="contact-link">GitHub</a>
+    <a href="#" class="contact-link">LinkedIn</a>
+    <a href="#" class="contact-link">Twitter</a>
+    <a href="#" class="contact-link">Resume</a>
+    <a href="#" class="contact-link">Instagram</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Designed & built by Chiboy(NazaTheWaze) · 2026</p>
+</footer>
+</body>
+</html>

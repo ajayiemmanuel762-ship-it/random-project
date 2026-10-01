@@ -1,0 +1,74 @@
+/*.add-button {
+        border: none;
+        background-color: rgb(255, 216, 20);
+        padding: 10px 20px;
+        font-weight: bold;
+        border-radius: 50px;
+        margin-right: 20px;
+      }
+
+      .request-button {
+        background-color: black;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-weight: bold;
+      }
+
+      .Schedule-button {
+        border: none;
+        padding: 10px 20px;
+        font-weight: bold;
+        background-color: rgb(230, 230, 230);
+        color: black;
+        margin-left: 20px;
+      }*/
+
+      .toggle-button {
+        background: #7b2ff7;
+        color: #eee;
+        padding: 10px;
+        border: solid 1px;
+        border-radius: 20%;
+        margin-inline: 10px;
+        font-family: arial;
+        font-size: 15px;
+        font-weight: 400;
+      }
+
+      .toggle-button:focus-within {
+        background-color: brown;
+        border: none;
+        padding: 20px 20px;
+        transition: 10ms;
+
+      }
+
+      .updateGame-btn {
+        background-color: yellowgreen;
+        color: black;
+        font-family: courier;
+        font-size: 12px;
+      }
+
+      .updateMusic-btn {
+        background-color: burlywood;
+        color: black;
+        letter-spacing: 5px;
+      }
+      .updateMusic-btn:hover {
+        background-color:cornflowerblue;
+        color: white;
+        transform: translateY(100%);
+        transition: all ease-out;
+      }
+
+      .updateTech-btn {
+        background-color: transparent;
+        color: black;
+      }
+
+      .updateTech-btn:hover {
+        color: #eee;
+        background-color: black;
+      }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <button class="hey-btn">Hey</button>
+    <button class="hello-btn">hello</button>
+    <p>.........</p>
+
+    <button class="head-btn" onclick="
+    document.querySelector('.par')
+      .innerHTML = 'You choose heads';
+    ">heads</button>
+
+    <button class="tails-btn" onclick="
+    document.querySelector('.par')
+      .innerHTML = 'You choose tails';
+    ">tails</button>
+
+    <p class="par"></p>
+
+    <input placeholder="Name" class="input-btn" onkeydown="
+    UpdateinputBtn();
+    ">
+
+    <button class="submit-btn" onclick="
+    UpdateSubmitBtn();
+    ">Submit</button>
+
+    <p class="par-2"></p>
+    <script>
+      console.log(document.querySelector('button').innerHTML);
+
+      document.querySelector('.hello-btn')
+        .innerHTML = 'Done';
+      
+      function UpdateSubmitBtn() {
+        const text = 'Sola';
+
+        const inputElement = document.querySelector('.input-btn');
+        document.querySelector('.par-2')
+          .innerHTML = `My name is: ${inputElement.value} ${text}`;
+      }
+
+      function UpdateinputBtn() {
+        if (event.key === 'Enter') {
+          UpdateSubmitBtn()
+        };
+      }
+    </script>
+  </body>
+</html>

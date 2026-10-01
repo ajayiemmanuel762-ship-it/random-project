@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/MyRandomfile.ex.css">
+  <title>NazaTheWaze</title>
+</head>
+<body>
+  <!-- example of label + input flexibility with "for" + "id" (most flexible to use)-->
+  <label for="email">Email
+    <input type="email" id="email" name="email" placeholder="Example@gmail.com">
+  </label>
+
+  <!--implicit association, No for "id" needed.
+  for clean and simple form, label automatically binds to the input inside-->
+  <label for="gmail">Gmail
+    <input type="email" name="email" id="gmail">
+  </label>
+
+  <!--checkbox: clicking text toggles it-->
+  <label class="check">
+    <input type="checkbox" id="terms"> I agree to the terms
+  </label>
+
+  <!--Radio group: each option needs its own label-->
+  <div class="input-container">
+    <input type="radio" id="small" name="size" value="s">
+    <label for="small">Small</label>
+  
+    <input type="radio" id="large" name="size" value="s">
+    <label for="large">Large</label>
+  </div>
+  <p>
+    implicit association, No for "id" needed.
+    <br>
+    For clean and simple form, label automatically binds to the input inside.
+  </p>
+
+  <div class="modal">
+    <p>modal title</p>
+    <time>10:00</time>
+  </div>
+</body>
+</html>
